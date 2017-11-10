@@ -1,4 +1,4 @@
-# iPhone X Availability CLI
+# iPhone X Availability Node CLI
 
 A node cli tool I put together to check the iPhone X in-store availability near me instead of having to refresh the apple website over and over again.
 
