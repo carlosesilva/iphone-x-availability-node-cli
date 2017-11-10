@@ -32,7 +32,7 @@ const optionDefinitions = [
   {
     name: 'storage',
     type: String,
-    defaultValue: '256',
+    defaultValue: 256,
     description: "Define which storage size to search for.  Accepted options are: '64', '256'.",
   },
   {
