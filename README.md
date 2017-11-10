@@ -8,6 +8,9 @@ By the way this was only tested on a Mac, I can't guarantee it will work on othe
 
 Feel free to submit a pull request with improvements or just simply fork it and modify it for your own needs. Soon there won't be a shortage of iPhones anymore so this tool will be irrelevant.
 
+### What it does
+It continously makes requests to Apple's availability api. When it finds some new stock near you, it displays the stores' name and distance from your zipcode then exits the program.
+
 ### Requirements
 - Node v7.6+ (it uses async-await)
 
