@@ -49,6 +49,8 @@ const usageDefinition = [
   }
 ]
 
+// if --help is present or --zip wasn't defined, 
+// then display the help screen and exit the program.
 if (options['help'] || options['zip'] === undefined) {
   console.log(getUsage(usageDefinition));
   process.exit();
