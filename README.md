@@ -16,9 +16,10 @@ It continously makes requests to Apple's availability api. When it finds some ne
 
 ### How to use
 
-1. Clone this repository
-1. Instal dependencies by running `npm install`
-1. Run the program by running `node index.js --zip=12345`
+1. Clone this repository `git clone https://github.com/carlosesilva/iphone-x-availability-node-cli.git`
+1. Go into the directory `cd iphone-x-availability-node-cli`
+1. Instal dependencies `npm install`
+1. Run the program `node index.js --zip=12345`
 
 ### Examples
 
@@ -30,6 +31,11 @@ node index.js --zip=012345
 Check availability for ATT iPhone X 64gb in silver every minute near the zip code 02115
 ```
 node index.js --carrier=ATT --color=silver --storage=64 --delay=60 --zip=02115
+```
+
+Use the --help flag for more information
+```
+node index.js --help
 ```
 
 ### Options
