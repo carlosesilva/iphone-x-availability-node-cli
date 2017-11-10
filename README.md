@@ -4,7 +4,12 @@ A node cli tool I put together to check the iPhone X in-store availability near 
 
 **Warning**: This was very quickly put together so it is very rough and has a lot of room for improvement. It did end up being successful in letting me know there was some new stock near me a few hours after I built it so at the very least: it works!
 
+By the way this was only tested on a Mac, I can't guarantee it will work on other platforms.
+
 Feel free to submit a pull request with improvements or just simply fork it and modify it for your own needs. Soon there won't be a shortage of iPhones anymore so this tool will be irrelevant.
+
+### Requirements
+- Node v7.6+ (it uses async-await)
 
 ### How to use
 
