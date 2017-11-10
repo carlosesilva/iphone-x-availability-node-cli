@@ -34,10 +34,12 @@ let lastRequestTimestamp = null;
  * @param {String} str The string that will be outputed.
  */
 function updateStatus() {
+  // If lastRequestTimestamp hasn't been update yet, do nothing.
   if (lastRequestTimestamp === null) {
     return;
   }
 
+  // Get the amount of time elapsed since last request.
   const timeDelta = Date.now() - lastRequestTimestamp;
   const timeInSeconds = Math.floor(timeDelta / 1000);
   process.stdout.write(`Status: Device not available. Last request made ${timeInSeconds} seconds ago\r`);
@@ -127,8 +129,10 @@ async function requestLoop() {
 process.stdout.write('Starting program with the following settings:\n');
 process.stdout.write(`${JSON.stringify(options, null, 2)}\n`);
 
-// Kick off program.
+// Update the display every second.
 setInterval(() => {
   updateStatus();
 }, 1000);
+
+// Kick off request recursion.
 requestLoop();
