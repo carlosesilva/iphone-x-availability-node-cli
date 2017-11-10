@@ -19,7 +19,8 @@ const optionDefinitions = [
 const options = commandLineArgs(optionDefinitions);
 
 // Get part number for the specified device.
-const partNumber = partNumbers[options.model][options.color][options.storage];
+const partNumber =
+  partNumbers[options.model][options.carrier.toUpperCase()][options.color][options.storage];
 
 // Construct the endpoint url with the options selected.
 const endpoint = `https://www.apple.com/shop/retail/pickup-message?pl=true&cppart=${options.carrier}/US&parts.0=${partNumber}&location=${options.zip}`;

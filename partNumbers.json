@@ -1,22 +1,44 @@
 {
   "x": {
-    "gray": {
-      "64": "",
-      "256": "MQAU2LL/A"
+    "TMOBILE": {
+      "gray": {
+        "64": "MQAQ2LL/A",
+        "256": "MQAU2LL/A"
+      },
+      "silver": {
+        "64": "MQAR2LL/A",
+        "256": "MQAV2LL/A"
+      }
     },
-    "silver": {
-      "64": "",
-      "256": ""
-    }
-  },
-  "8": {
-    "gray": {
-      "64": "",
-      "256": "MQ932LL/A"
+    "ATT": {
+      "gray": {
+        "64": "MQAJ2LL/A",
+        "256": "MQAM2LL/A"
+      },
+      "silver": {
+        "64": "MQAK2LL/A",
+        "256": "MQAN2LL/A"
+      }
     },
-    "silver": {
-      "64": "",
-      "256": ""
+    "SPRINT": {
+      "gray": {
+        "64": "MQCR2LL/A",
+        "256": "MQCV2LL/A"
+      },
+      "silver": {
+        "64": "MQCT2LL/A",
+        "256": "MQCW2LL/A"
+      }
+    },
+    "VERIZON": {
+      "gray": {
+        "64": "MQCK2LL/A",
+        "256": "MQCN2LL/A"
+      },
+      "silver": {
+        "64": "MQCL2LL/A",
+        "256": "MQCP2LL/A"
+      }
     }
   }
 }
