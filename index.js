@@ -171,9 +171,8 @@ function displayStoresAvailable(storesAvailable) {
   );
 
   // Output the message.
-  process.stdout.write(`The device is currently available at ${storesAvailable.length} stores near you:`);
-  process.stdout.write(storesAvailableStr);
-  process.stdout.write('\n');
+  console.log(`The device is currently available at ${storesAvailable.length} stores near you:`);
+  console.log(storesAvailableStr);
 }
 
 /**
@@ -199,8 +198,8 @@ async function requestLoop() {
 }
 
 // Display program started message.
-process.stdout.write('Starting program with the following settings:\n');
-process.stdout.write(`${JSON.stringify(options, null, 2)}\n`);
+console.log('Starting program with the following settings:');
+console.log(`${JSON.stringify(options, null, 2)}`);
 
 // Update the display every second.
 setInterval(() => {
