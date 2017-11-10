@@ -1,22 +1,60 @@
 // Require npm packages.
 const fetch = require('node-fetch');
 const commandLineArgs = require('command-line-args');
+const getUsage = require('command-line-usage');
 
 // Get partNumbers from json file.
 const partNumbers = require('./partNumbers.json');
 
 // Define command line args accepted.
 const optionDefinitions = [
-  { name: 'carrier', type: String, defaultValue: 'TMOBILE' },
-  { name: 'model', type: String, defaultValue: 'x' },
-  { name: 'color', type: String, defaultValue: 'gray' },
-  { name: 'storage', type: String, defaultValue: '256' },
-  { name: 'zip', type: String, defaultOption: true },
-  { name: 'delay', type: Number, defaultValue: 30 },
+  { name: 'carrier', type: String, defaultValue: 'TMOBILE', description: "Define which carrier to search for.  Accepted options are: 'ATT', 'SPRING', 'TMOBILE', 'VERIZON'."},
+  { name: 'model', type: String, defaultValue: 'x', description: "Define which model iPhone to search for.  'x' is the only option currently available."},
+  { name: 'color', type: String, defaultValue: 'gray', description: "Define which color iPhone to search for.  Accepted options are: 'silver', 'gray'."},
+  { name: 'storage', type: String, defaultValue: '256', description: "Define which storage size to search for.  Accepted options are: '64', '256'."},
+  { name: 'zip', type: String, defaultOption: true, description: "Define the area to search in by zip code.  This option is required."},
+  { name: 'delay', type: Number, defaultValue: 30, description: "Define the number of seconds between requests."},
+  { name: 'help', type: Boolean, description: "Display this help screen."},
 ];
 
 // Parse command line args.
 const options = commandLineArgs(optionDefinitions);
+
+// Define the help screen to be displayed if --help is present in options
+const usageDefinition = [
+  {
+    header: 'iPhone X Availability Node CLI',
+    content: "The app continously makes requests to Apple's availability api. When it finds some new stock near you, it displays the stores' name and distance from your zipcode then exits the program."
+  },
+  {
+    header: 'Synopsis',
+    content: [
+      { 
+        desc: 'Default arguments.',
+        example: '$ node index.js [bold]{--carrier} TMOBILE [bold]{--model} x [bold]{--color} gray [bold]{--storage} 256 [bold]{--delay} 30'
+      },
+      { 
+        desc: 'Simple example',
+        example: '$ node index.js [bold]{--zip} 10001 [bold]{--color} silver'
+      },
+      { 
+        desc: 'Help screen.',
+        example: '$ node index.js [bold]{--help}'
+      },
+    ]
+  },
+  {
+    header: "Options",
+    optionList: optionDefinitions
+  }
+]
+
+// if --help is present or --zip wasn't defined, 
+// then display the help screen and exit the program.
+if (options['help'] || options['zip'] === undefined) {
+  console.log(getUsage(usageDefinition));
+  process.exit();
+}
 
 // Get part number for the specified device.
 const partNumber =
