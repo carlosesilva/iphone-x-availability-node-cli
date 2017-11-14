@@ -52,7 +52,7 @@ const optionDefinitions = [
     name: 'email',
     type: String,
     defaultValue: false,
-    description: 'Email to send notification to if phone is availiable.',
+    description: 'Email to send notification to if phone is available.',
   },
   { name: 'help', type: Boolean, description: 'Display this help screen.' },
 ];
