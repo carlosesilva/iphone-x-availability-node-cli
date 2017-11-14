@@ -4,6 +4,7 @@ const commandLineArgs = require('command-line-args');
 const getUsage = require('command-line-usage');
 
 // Get partNumbers from json file.
+const creds = require('./emailCreds.json');
 const partNumbers = require('./partNumbers.json');
 
 // Define command line args accepted.
@@ -46,6 +47,12 @@ const optionDefinitions = [
     type: Number,
     defaultValue: 30,
     description: 'Define the number of seconds between requests.',
+  },
+  {
+    name: 'email',
+    type: String,
+    defaultValue: false,
+    description: 'Email to send notification to if phone is availiable.',
   },
   { name: 'help', type: Boolean, description: 'Display this help screen.' },
 ];
@@ -162,7 +169,7 @@ function getStoresAvailable() {
  *
  * @param {Array} storesAvailable The array of stores where the device is avaliable.
  */
-function displayStoresAvailable(storesAvailable) {
+function notifyStoresAvailable(creds, email, storesAvailable) {
   // Construct the output string by reducing the storesAvailable array into a string.
   const storesAvailableStr = storesAvailable.reduce(
     (result, store) =>
@@ -171,8 +178,17 @@ function displayStoresAvailable(storesAvailable) {
   );
 
   // Output the message.
-  console.log(`The device is currently available at ${storesAvailable.length} stores near you:`);
-  console.log(storesAvailableStr);
+  const statusStr = `The device is currently available at ${storesAvailable.length} stores near you:` + '\n' + storesAvailableStr;
+  if (email && creds && creds.email && creds.pass) {
+    require('gmail-send')({
+      user: creds.email,
+      pass: creds.pass,
+      to: email,
+      subject: 'iPhone X availability notice!',
+      text: statusStr
+    })({});
+  }
+  console.log(statusStr);
 }
 
 /**
@@ -192,7 +208,7 @@ async function requestLoop() {
     }, options.delay * 1000);
   } else {
     // The device is available. Show that information to the user and exit the program.
-    displayStoresAvailable(storesAvailable);
+    notifyStoresAvailable(creds, options.email, storesAvailable);
     process.exit();
   }
 }
