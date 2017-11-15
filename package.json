@@ -12,7 +12,8 @@
   "dependencies": {
     "command-line-args": "^4.0.7",
     "command-line-usage": "^4.0.1",
-    "node-fetch": "^1.7.3"
+    "node-fetch": "^1.7.3",
+    "pushover-notifications": "^0.2.4"
   },
   "devDependencies": {
     "eslint": "^4.10.0",
