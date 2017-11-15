@@ -2,6 +2,7 @@
 const fetch = require('node-fetch');
 const commandLineArgs = require('command-line-args');
 const getUsage = require('command-line-usage');
+const push = require( 'pushover-notifications' );
 
 // Get partNumbers from json file.
 const partNumbers = require('./partNumbers.json');
@@ -101,6 +102,13 @@ const endpoint = `https://www.apple.com/shop/retail/pickup-message?pl=true&cppar
 // Keep track of the last request time.
 let lastRequestTimestamp = null;
 
+// Construct push endpoint
+
+const p = new push ( {
+  user: process.env.PUSHOVER_USER,
+  token: process.env.PUSHOVER_TOKEN
+});
+
 /**
  * Update program status display
  *
@@ -175,6 +183,15 @@ function displayStoresAvailable(storesAvailable) {
   console.log(storesAvailableStr);
 }
 
+// Build the message
+const msg = {
+  message: 'iPhone X stock available nearby!',
+  title: 'Important News!',
+  priority: 2,
+  retry: 60,
+  expire: 1800
+};
+
 /**
  * The main program loop
  *
@@ -193,6 +210,11 @@ async function requestLoop() {
   } else {
     // The device is available. Show that information to the user and exit the program.
     displayStoresAvailable(storesAvailable);
+    p.send (msg, function (err, result){
+      if (err) {
+        throw err;
+      }
+    })
     process.exit();
   }
 }
