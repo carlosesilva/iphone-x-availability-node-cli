@@ -23,14 +23,14 @@ It continously makes requests to Apple's availability api. When it finds some ne
 
 ### Examples
 
-Check availability for TMOBILE iPhone X 256gb in space gray every 30 seconds near the zip code 12345 (pretty much the default settings so we don't need to specify them here, the zip code is always required though)
+Check availability for TMOBILE iPhone X 256gb in space gray every 30 seconds within 60 miles of the zip code 12345 (pretty much the default settings so we don't need to specify them here, the zip code is always required though)
 ```
 node index.js --zip=012345
 ```
 
-Check availability for ATT iPhone X 64gb in silver every minute near the zip code 02115
+Check availability for ATT iPhone X 64gb in silver every minute within 30 miles of the zip code 02115
 ```
-node index.js --carrier=ATT --color=silver --storage=64 --delay=60 --zip=02115
+node index.js --carrier=ATT --color=silver --storage=64 --delay=60 --zip=02115 --distance=30
 ```
 
 Use the --help flag for more information
@@ -39,13 +39,14 @@ node index.js --help
 ```
 
 ### Options
-| option  | accepted values                               | default                               |
-| ------- | --------------------------------------------- | ------------------------------------- |
-| carrier | `'ATT'`, `'SPRINT'`, `'TMOBILE'`, `'VERIZON'` | `'TMOBILE'`                           |
-| model   | `'x'`                                         | `'x'`                                 |
-| color   | `'silver'`, `'gray'`                          | `'gray'`                              |
-| storage | `64`, `256`                                   | `256`                                 |
-| delay   | Integer number of seconds between requests    | `30`                                  |
-| zip*    | 5 digit US zip code                           | Not provided, you must enter your own |
+| option   | accepted values                               | default                               |
+| -------- | --------------------------------------------- | ------------------------------------- |
+| carrier  | `'ATT'`, `'SPRINT'`, `'TMOBILE'`, `'VERIZON'` | `'TMOBILE'`                           |
+| model    | `'x'`                                         | `'x'`                                 |
+| color    | `'silver'`, `'gray'`                          | `'gray'`                              |
+| storage  | `64`, `256`                                   | `256`                                 |
+| delay    | Integer number of seconds between requests    | `30`                                  |
+| distance | Integer number of miles from zipcode to look  | `60`                                  |
+| zip*     | 5 digit US zip code                           | Not provided, you must enter your own |
 
 *\*required*
