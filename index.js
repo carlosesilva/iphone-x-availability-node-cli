@@ -167,7 +167,7 @@ function displayStoresAvailable(storesAvailable) {
   const storesAvailableStr = storesAvailable.reduce(
     (result, store) =>
       `${result}\n${store.address.address} which is ${store.storeDistanceWithUnit} away`,
-    '',
+    ''
   );
 
   // Output the message.
