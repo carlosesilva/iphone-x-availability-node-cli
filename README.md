@@ -12,7 +12,7 @@ Feel free to submit a pull request with improvements or just simply fork it and 
 It continously makes requests to Apple's availability api. When it finds some new stock near you, it displays the stores' name and distance from your zipcode then exits the program.
 
 ### Requirements
-- Node v7.6+ (it uses async-await)
+- Node v8+
 
 ### How to use
 
