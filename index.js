@@ -181,6 +181,9 @@ function displayStoresAvailable(storesAvailable) {
     '',
   );
 
+  // Output bell sound.
+  console.log('\u0007');
+
   // Output the message.
   console.log(`The device is currently available at ${storesAvailable.length} stores near you:`);
   console.log(storesAvailableStr);
