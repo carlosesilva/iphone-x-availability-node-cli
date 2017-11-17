@@ -12,6 +12,7 @@
   "dependencies": {
     "command-line-args": "^4.0.7",
     "command-line-usage": "^4.0.1",
+    "gmail-send": "^1.2.11",
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
