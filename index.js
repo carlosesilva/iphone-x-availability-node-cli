@@ -43,7 +43,7 @@ const optionDefinitions = [
   },
   {
     name: 'distance',
-    type: String,
+    type: Number,
     defaultValue: 60,
     description: 'Define the distance from the supplied zip code to look for iPhone.',
   },
