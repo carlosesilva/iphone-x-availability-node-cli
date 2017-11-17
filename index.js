@@ -45,7 +45,7 @@ const optionDefinitions = [
     name: 'distance',
     type: String,
     defaultValue: 60,
-    description: "Define the distance from the supplied zip code to look for iPhone.",
+    description: 'Define the distance from the supplied zip code to look for iPhone.',
   },
   {
     name: 'delay',
@@ -133,20 +133,20 @@ function updateStatus() {
 function processResponse(data) {
   // Destructure the stores object out of the body.
   const { stores } = data.body;
-  
+
   // Filter out stores that do not have the device available.
   const storesAvailable = stores.filter((store) => {
-      //check if store is within distance
-      if (store.storedistance < options.distance) {
-        // Select the specified device partNumber.
-        const part = store.partsAvailability[partNumber];
-        // Check that the pickupDisplay property says 'available'.
-        const availability = part.pickupDisplay === 'available';
-        // Return true if the device is available or else false.
-        return availability;
-      }
-      //store wasn't within distance so return false
-      return false;
+    // Check if store is within distance.
+    if (store.storedistance < options.distance) {
+      // Select the specified device partNumber.
+      const part = store.partsAvailability[partNumber];
+      // Check that the pickupDisplay property says 'available'.
+      const availability = part.pickupDisplay === 'available';
+      // Return true if the device is available or else false.
+      return availability;
+    }
+    // Store wasn't within distance so return false.
+    return false;
   });
 
   // Return an array of stores where the device is available.
